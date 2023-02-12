@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <link
+    rel="stylesheet"
+    href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+  <title><%= pageTitle %></title>
+
+  <!-- Always here -->
+  <script
+    src="https://kit.fontawesome.com/c09e431512.js"
+    crossorigin="anonymous"
+  ></script>
+
+  <% if (index) { %>
+  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script defer src="js/index.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (accountLogin) { %>
+  <script defer src="js/login.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (accountDetails) { %>
+  <script defer src="js/account-details.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (accountPage) { %>
+  <script defer src="js/account-page.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (dashboard) { %>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="js/dashboard.js"></script>
+  <script defer src="js/food-arrow-nav.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (calculator) { %>
+  <script defer src="js/calculator.js"></script>
+  <script defer src="js/food-arrow-nav.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (food) { %>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="js/food.js"></script>
+  <script defer src="js/food-arrow-nav.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (foodDetails) { %>
+  <script defer src="js/food-setup.js"></script>
+  <script defer src="js/food-arrow-nav.js"></script>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (foodPersonal) { %>
+  <script defer src="js/food-personal.js"></script>
+  <script defer src="js/food-arrow-nav.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <% } %>
+</head>
+
+<!-- prettier-ignore -->
+<html lang="bg">

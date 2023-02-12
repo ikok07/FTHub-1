@@ -1,0 +1,402 @@
+<%- include('../includes/head') -%>
+<body class="profile-body">
+  <% if (!user) { %>
+  <main class="container">
+    <div class="login-container">
+      <div class="login-left-col">
+        <img src="images/login.jpg" alt="" />
+      </div>
+      <div class="login-right-col">
+        <div class="login-box">
+          <div class="login-header">
+            <h1>Добре дошъл в FTHub</h1>
+            <small
+              >Нямаш акаунт? <a href="/account-signup">Натисни тук</a></small
+            >
+          </div>
+          <% if (errMessage) { %>
+          <div class="msg-div">
+            <h2 class="error-message"><%= errMessage %></h2>
+          </div>
+          <% } %>
+
+          <!-- prettier-ignore -->
+          <% if (successMessage) { %>
+          <div class="msg-div msg-success">
+            <h2 class="success-message"><%= successMessage %></h2>
+          </div>
+          <% } %>
+
+          <form action="/login" method="POST">
+            <div class="login-main">
+              <div class="login-email">
+                <span>Имейл</span>
+                <input type="email" class="login-email-input" name="email" />
+              </div>
+              <div class="login-password">
+                <span>Парола</span>
+                <div class="login-input-password-box">
+                  <input
+                    type="password"
+                    class="login-password-input"
+                    name="password"
+                  />
+                  <div class="eye-button">
+                    <i class="fa-regular fa-eye" id="available"></i>
+                    <i
+                      class="fa fa-eye-slash"
+                      id="forbiddenEye"
+                      aria-hidden="true"
+                    ></i>
+                  </div>
+                </div>
+              </div>
+              <div class="log-div">
+                <button class="log-but">Влизане</button>
+                <small
+                  >Забравена парола?
+                  <a href="/reset-password">Натисни тук</a></small
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <% } %> <% if (user) { %>
+  <main class="profile-page-main">
+    <div class="dashboard-bottom profile-bottom">
+      <a href="/food" class="mobile-dashboard-but">
+        <i class="fa-solid fa-angles-left profile-mobile-back"></i>
+      </a>
+      <a class="mobile-dashboard-but mobile-navbut">
+        <i class="fa-solid fa-gear"></i>
+      </a>
+      <a class="mobile-training-but mobile-navbut">
+        <i class="fa-solid fa-key"></i>
+      </a>
+      <a class="mobile-navbut">
+        <i class="fa-solid fa-calendar-days"></i>
+      </a>
+      <form action="/logout" method="POST">
+        <button type="submit" class="">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        </button>
+      </form>
+    </div>
+    <div class="profile-left-column">
+      <div class="profile-img-and-name">
+        <img
+          class="profile-picture"
+          src="https://pictures.kare-design.com/5/KARE-51866-700x700.jpg"
+          alt="profile picture"
+        />
+        <h3 class="user-name"><%= user.name %></h3>
+        <a href="/food" class="button-blue profile-return-button"
+          ><i class="fa-solid fa-angles-left"></i> <span>Назад</span></a
+        >
+      </div>
+      <div class="profile-page-select">
+        <div class="profile-page-choose-div">
+          <i class="fa-solid fa-gear"></i>
+          <small class="profile-panel-small" data-onpage="1"
+            >Общи настройки</small
+          >
+        </div>
+        <div class="profile-page-choose-div">
+          <i class="fa-solid fa-key"></i>
+          <small class="profile-panel-small" data-onpage="0">Сигурност</small>
+        </div>
+        <div class="profile-page-choose-div">
+          <i class="fa-solid fa-calendar-days"></i>
+          <small class="profile-panel-small" data-onpage="0">Абонамент</small>
+        </div>
+        <hr class="profile-hr" />
+
+        <form class="profile-page-choose-div" action="/logout" method="POST">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          <button class="profile-logout-button">Изход от профил</button>
+        </form>
+      </div>
+    </div>
+    <div class="profile-right-slide-div">
+      <div class="profile-right-wrapper">
+        <form class="profile-right-column" action="/save-account" method="POST">
+          <h1>Общи настройки</h1>
+          <div>
+            <% if (errMessage) { %>
+            <div class="msg-div acc-msg">
+              <h2 class="error-message"><%= errMessage %></h2>
+            </div>
+            <% } %> <% if (successMessage) { %>
+            <div class="msg-div msg-success acc-msg">
+              <h2 class="success-message"><%= successMessage %></h2>
+            </div>
+            <% } %>
+          </div>
+          <div class="profile-settings-div">
+            <div class="profile-sex-and-born-year">
+              <h2>Пол и година на раждане</h2>
+              <div class="profile-sex-type">
+                <label for="sex">Пол</label>
+                <select name="sex" class="input after-input-stwo input-gender">
+                  <% if (userDetails.sex === 'Мъж') { %>
+                  <option value="Мъж">Мъж</option>
+                  <option value="Жена">Жена</option>
+                  <% } else if (userDetails.sex === 'Жена') { %>
+                  <option value="Жена">Жена</option>
+                  <option value="Мъж">Мъж</option>
+                  <% } else { %>
+                  <option value="0">Избери пол</option>
+                  <option value="Мъж">Мъж</option>
+                  <option value="Жена">Жена</option>
+                  <% } %>
+                </select>
+              </div>
+              <div class="profile-born-year">
+                <label for="born">Година на раждане</label>
+                <select name="born" class="input after-input-one input-birth">
+                  <% if (userDetails.born) { %>
+                  <option value="<%= userDetails.born %>">
+                    <%= userDetails.born %>г.
+                  </option>
+                  <% for (let i = 2010; i >= 1980; i--) { %>
+                  <option value="<%= i %>"><%= i %>г.</option>
+                  <% } %> <% } else { %>
+                  <option value="0">Избери година на раждане</option>
+                  <% for (let i = 2010; i >= 1930; i--) { %>
+                  <option value="<%= i %>"><%= i %>г.</option>
+                  <% } %> <% } %>
+                </select>
+              </div>
+            </div>
+            <div class="profile-height-and-weight">
+              <h2>Ръст и тегло</h2>
+              <div class="profile-height-div">
+                <label for="height">Ръст</label>
+                <select name="height" class="input profile-height-input">
+                  <% if (userDetails.height) { %>
+                  <option value="<%= userDetails.height %>">
+                    <%= userDetails.height %> см
+                  </option>
+                  <% for (let i = 210; i >= 110; i--) { %>
+                  <option value="<%= i %>"><%= i %> см</option>
+                  <% } %> <% } else { %>
+                  <option value="0">Избери</option>
+                  <% for (let i = 210; i >= 110; i--) { %>
+                  <option value="<%= i %>"><%= i %> см</option>
+                  <% } %> <% } %>
+                </select>
+              </div>
+              <div class="profile-weight-div">
+                <label for="weight">Тегло</label>
+                <select name="weight" class="input profile-weight-input">
+                  <% if (userDetails.kg) { %>
+                  <option value="<%=userDetails.kg %>">
+                    <%=userDetails.kg %> кг.
+                  </option>
+                  <% for (let i = 35; i <= 110; i++) { %>
+                  <option value="<%= i %>"><%= i %> кг.</option>
+                  <% } %> <% } else { %>
+                  <option value="0">Избери</option>
+                  <% for (let i = 35; i <= 110; i++) { %>
+                  <option value="<%= i %>"><%= i %> кг.</option>
+                  <% } %> <% } %>
+                </select>
+              </div>
+            </div>
+
+            <div class="profile-sport-types">
+              <h2>Практикувани спортове</h2>
+              <div class="profile-sport-type-div">
+                <div id="sportTypes" class="profile-sport-type-btns">
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    💪Фитнес
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🏊Плуване
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🏃Лека атлетика
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🚴Колоездене
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🥋Карате
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🥋Кик-бокс
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🥋Таекуондо
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    👊Борба
+                  </button>
+                  <button
+                    type="button"
+                    name="sport"
+                    value="0"
+                    class="after-account-sport-types-button profile-sport-type-button"
+                  >
+                    🥋MMA
+                  </button>
+                  <input
+                    class="hiddenSports"
+                    type="hidden"
+                    name="allSports"
+                    value="<%= sports %>"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="profile-submit-div">
+              <button type="submit" class="button-blue save-button">
+                Запази промените
+              </button>
+            </div>
+          </div>
+        </form>
+        <div class="profile-security-div">
+          <h1>Сигурност</h1>
+          <div class="profile-security-settings-div">
+            <form
+              class="profile-change-name"
+              action="/change-name"
+              method="POST"
+            >
+              <h2>Промяна на потребителско име</h2>
+              <div class="profile-security-input-div">
+                <div class="profile-first-name">
+                  <label for="first-name">Име</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    class="input input-type"
+                    value="<%= user.name.split(' ')[0] %>"
+                  />
+                </div>
+                <div class="profile-new-first-name">
+                  <label for="last-name">Фамилия</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    class="input input-type"
+                    value="<%= user.name.split(' ')[1] %>"
+                  />
+                </div>
+              </div>
+              <div class="profile-security-submit-button">
+                <button class="button-blue">Потвърди</button>
+              </div>
+            </form>
+            <form
+              class="profile-change-email"
+              action="/change-email"
+              method="POST"
+            >
+              <h2>Промяна на имейл адрес</h2>
+              <div class="profile-security-input-div">
+                <div class="profile-new-email">
+                  <label for="new-email">Нов имейл адрес</label>
+                  <input
+                    type="email"
+                    name="newEmail"
+                    class="input input-type"
+                  />
+                </div>
+              </div>
+              <div class="profile-security-submit-button">
+                <button class="button-blue">Потвърди</button>
+              </div>
+            </form>
+            <form
+              class="profile-change-password"
+              action="/change-password"
+              method="POST"
+            >
+              <h2>Промяна на парола</h2>
+              <div class="profile-security-input-div">
+                <div class="profile-old-pass">
+                  <label for="old-password">Настояща парола</label>
+                  <input
+                    type="password"
+                    name="oldPassword"
+                    class="input input-type"
+                  />
+                </div>
+                <div class="profile-new-pass">
+                  <label for="new-password">Нова парола</label>
+                  <input
+                    type="password"
+                    name="newPassword"
+                    class="input input-type"
+                  />
+                </div>
+              </div>
+              <div class="profile-security-submit-button">
+                <button class="button-blue">Потвърди</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="profile-subscriptions-div">
+          <h1>Абонамент <img src="images/Stripe Logo.svg" alt="" /></h1>
+          <div class="subscription-main-options">
+            <h2>Контролирай абонамента си чрез портала на Stripe</h2>
+            <a
+              class="button-blue subscription-control-but"
+              href="https://billing.stripe.com/p/login/test_4gwg11g7S4UC92M000"
+            >
+              Към Stripe
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <% } %>
+</body>

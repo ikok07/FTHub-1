@@ -1,0 +1,169 @@
+<%- include('../includes/head') %>
+<body class="dashboard-body">
+  <%- include('../includes/dashboard-nav') %>
+  <main class="personal-main">
+    <div class="dashboard-header">
+      <div class="dash-h-left">
+        <div class="heading-date">
+          <h1>Планиране</h1>
+          <h1>Февруари 2023</h1>
+        </div>
+        <div class="date-control">
+          <select name="period-choose" class="input period-choose">
+            <option value="1">Дневно</option>
+            <option value="2">Последни дни</option>
+            <option value="3">Седмично</option>
+          </select>
+          <div class="d-control-btns">
+            <button class="input fa-angle-left-btn">
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+            <button class="return-today input">Днешна дата</button>
+            <button class="fa-calendar-days-btn input">
+              <i class="fa-regular fa-calendar-days"></i>
+              <i class="fa-solid fa-angle-down"></i>
+              <input type="date" class="food-calendar-input" />
+            </button>
+            <button class="fa-angle-right-btn input">
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="dash-h-right"></div>
+    </div>
+    <div class="personal-container">
+      <div class="personal-back"><i class="fa-solid fa-chevron-left"></i></div>
+      <div class="personal-day-main">
+        <div class="personal-day-container">
+          <div class="personal-col1">
+            <div class="col1-day">
+              <div class="left-col1">
+                <span>Петък</span>
+                <h1>10</h1>
+              </div>
+              <div class="right-col1">
+                <i class="fa-solid fa-arrows-rotate reload-all"></i>
+              </div>
+              <div class="personal-load-bar">
+                <div class="personal-loaded"></div>
+              </div>
+            </div>
+            <div class="col1-meal">
+              <div class="meal-header">
+                <div class="meal-header-left">
+                  <h2>Закуска</h2>
+                  <small>647 калории</small>
+                </div>
+                <div class="meal-header-right">
+                  <div class="eat-check">
+                    <input type="checkbox" class="eaten-check" /><label
+                      >Готово</label
+                    >
+                  </div>
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+            </div>
+            <div class="col1-meal">
+              <div class="meal-header">
+                <div class="meal-header-left">
+                  <h2>Обяд</h2>
+                  <small>647 калории</small>
+                </div>
+                <div class="meal-header-right">
+                  <div class="eat-check">
+                    <input type="checkbox" class="eaten-check" /><label
+                      >Готово</label
+                    >
+                  </div>
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+            </div>
+            <div class="col1-meal">
+              <div class="meal-header">
+                <div class="meal-header-left">
+                  <h2>Вечеря</h2>
+                  <small>647 калории</small>
+                </div>
+                <div class="meal-header-right">
+                  <div class="eat-check">
+                    <input type="checkbox" class="eaten-check" /><label
+                      >Готово</label
+                    >
+                  </div>
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+              <div class="meal-item">
+                <img src="images/salad.jpg" />
+                <h2>Салата "Шопска"</h2>
+                <small>200 гр.</small>
+              </div>
+            </div>
+          </div>
+          <div class="personal-col2">
+            <div class="personal-chart-div">
+              <canvas id="personalChart"></canvas>
+            </div>
+            <div class="personal-col2-total">
+              <h2 class="col2-header">Общи резултати</h2>
+              <div class="col2-stats col-2-cal">
+                <h2>Калории</h2>
+                <h2>2583</h2>
+              </div>
+              <div class="col2-stats col-2-carbs">
+                <h2>Въглехидрати</h2>
+                <h2>317 г.</h2>
+              </div>
+              <div class="col2-stats col-2-fat">
+                <h2>Мазнини</h2>
+                <h2>101.5 г.</h2>
+              </div>
+              <div class="col2-stats col-2-protein">
+                <h2>Протеини</h2>
+                <h2>132.8 г.</h2>
+              </div>
+            </div>
+            <div class="personal-col2-targets">
+              <h2 class="col2-header">Цели</h2>
+              <div class="cal-target">2591</div>
+              <div class="carbs-target">107 г.-324 г.</div>
+              <div class="fat-target">67 г. - 144 г.</div>
+              <div class="protein-target">68 г. - 324 г.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="personal-forward">
+        <i class="fa-solid fa-chevron-right"></i>
+      </div>
+    </div>
+  </main>
+</body>

@@ -1,0 +1,162 @@
+<%- include('../includes/head') -%>
+<body class="after-account-body">
+  <form class="after-final-form" action="/user-details" method="POST">
+    <main class="after-account-container">
+      <div class="after-account-header">
+        <h1>Добре дошъл в <span style="color: #01df9a">FTHub</span></h1>
+        <h3>
+          Преди да започнеш, трябва да попълниш някои данни, за да се възползваш
+          от всички функции на приложението.
+        </h3>
+        <div class="msg-div after-error hidden">
+          <small>Моля попълнете всички полета!</small>
+        </div>
+      </div>
+      <div class="after-questions-div">
+        <div class="after-base-info">
+          <img src="images/accIMG.jpg" alt="" />
+          <div class="base-info-div">
+            <small>Име: <small><%= user.name %></small></small>
+            <small>Имейл: <small><%= user.email %></small></small>
+            <small
+              >План:
+              <small
+                ><%= user.paidLevel === 1 ? 'Безплатен' : 'Платен' %></small
+              ></small
+            >
+          </div>
+        </div>
+        <hr class="after-hr" />
+        <div class="after-secondary-info">
+          <div class="after-sex-div">
+            <label for="sex" class="after-gender-label">Пол</label>
+            <select name="sex" class="input after-input-stwo input-gender">
+              <option value="0">Избери пол</option>
+              <option value="Мъж">Мъж</option>
+              <option value="Жена">Жена</option>
+            </select>
+          </div>
+          <div class="after-year-div">
+            <label for="birth-year" class="after-birth-year-label"
+              >Година на раждане</label
+            >
+            <select name="born" class="input after-input-one input-birth">
+              <option value="0">Избери година на раждане</option>
+              <% for (let i = 2010; i >= 1930; i--) { %>
+              <option value="<%= i %>"><%= i %>г.</option>
+              <% } %>
+            </select>
+          </div>
+          <div class="after-height-div">
+            <label for="height" class="after-weight-label">Ръст</label>
+            <select name="height" class="input after-input-one input-height">
+              <option value="0">Избери</option>
+              <% for (let i = 210; i >= 110; i--) { %>
+              <option value="<%= i %>"><%= i %> см</option>
+              <% } %>
+            </select>
+          </div>
+          <div class="after-weight-div">
+            <label for="weight" class="after-height-label"
+              >Твоите килограми</label
+            >
+            <select name="weight" class="input after-input-two input-weight">
+              <option value="0">Избери</option>
+              <% for (let i = 35; i <= 110; i++) { %>
+              <option value="<%= i %>"><%= i %> кг.</option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+        <hr class="after-hr" />
+        <div class="after-third-info">
+          <h3 class="after-header">Практикувани спортове</h3>
+          <div id="sportTypes" class="after-account-sport-types">
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              💪Фитнес
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🏊Плуване
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🏃Лека атлетика
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🚴Колоездене
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🥋Карате
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🥋Кик-бокс
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🥋Таекуондо
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              👊Борба
+            </button>
+            <button
+              type="button"
+              name="sport"
+              value="0"
+              class="after-account-sport-types-button"
+            >
+              🥋MMA
+            </button>
+            <input
+              class="hiddenSports"
+              type="hidden"
+              name="allSports"
+              value="0"
+            />
+          </div>
+        </div>
+        <hr class="after-hr" />
+        <div class="after-button-cont">
+          <button class="after-cont button-blue">Продължи</button>
+        </div>
+      </div>
+    </main>
+  </form>
+</body>

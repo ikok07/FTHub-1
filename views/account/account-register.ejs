@@ -1,0 +1,76 @@
+<%- include('../includes/head') -%>
+<body class="normal-body">
+  <header class="register--header">
+    <a class="logo-a" href="/">
+      <img
+        class="logo"
+        src="images/logo.png"
+        alt="apple logo png dallas shootings don add are speech zones used"
+      />
+    </a>
+  </header>
+  <!-- prettier-ignore -->
+  <% if (errMessage) { %>
+  <div class="msg-div">
+    <h2 class="error-message"><%= errMessage %></h2>
+  </div>
+  <% } %>
+
+  <!-- prettier-ignore -->
+  <% if (successMessage) { %>
+  <div class="msg-div msg-success">
+    <h2 class="success-message"><%= successMessage %></h2>
+  </div>
+  <% } %>
+
+  <main class="container">
+    <div class="register-container">
+      <div class="register-header">
+        <h1>Създаване на профил в FTHub</h1>
+      </div>
+      <div class="register-main">
+        <form action="/signup" method="POST">
+          <div class="register-names">
+            <div class="register-first-name">
+              <span>Име</span>
+              <input type="text" name="firstName" />
+            </div>
+            <div class="register-second-name">
+              <span>Фамилия</span>
+              <input type="text" name="lastName" />
+            </div>
+          </div>
+          <div class="register-email">
+            <span>Имейл</span>
+            <input type="email" class="register-email-input" name="email" />
+          </div>
+          <div class="register-password">
+            <span>Парола</span>
+            <input
+              type="password"
+              name="password"
+              class="register-password-input"
+            />
+          </div>
+          <div class="register-confirm-password">
+            <span>Повтори парола</span>
+            <input
+              type="password"
+              name="confirmPassword"
+              class="register-confirm-password-input"
+            />
+          </div>
+
+          <small
+            >Продължавайки се съгласявате с нашите <a href="">общи условия</a> и
+            <a href="">политика за поверителност</a></small
+          >
+          <div class="reg-log-button">
+            <button class="reg-button">Създаване</button>
+            <h6>Вече имаш профил? <a href="/account">Влез в него</a></h6>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>

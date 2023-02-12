@@ -1,0 +1,511 @@
+<%- include('../includes/head') %>
+<body class="dashboard-body">
+  <%- include('../includes/dashboard-nav') %>
+  <div class="food-container">
+    <div class="food-main">
+      <div class="food-welcome-sec">
+        <div class="food-welcome">
+          <small>Здравей,</small>
+          <h6><%= user.name %></h6>
+          <h6>👋</h6>
+        </div>
+        <h2>Планирай хранителния си режим</h2>
+        <div class="food-day-change">
+          <div class="day-change-col1">
+            <small class="">Тази седмица</small>
+            <h4 class="food-date">Петък, 6 Януари</h4>
+          </div>
+          <div class="food-arrows">
+            <i class="fa-solid fa-angle-left"></i>
+            <i class="fa-solid fa-angle-right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="food-goals-sec">
+        <h2>Цели за седмицата</h2>
+        <div class="goals-first-col">
+          <img src="images/blurred/stopWatch.png" alt="" />
+          <small>Очаквано количество калории за седмица</small>
+          <h4><%= caloriesWanted * 7 %></h4>
+        </div>
+        <div class="goals-second-col">
+          <img src="images/blurred/apple.png" alt="" />
+          <small>Нужно количество калории на ден</small>
+          <h4><%= caloriesWanted %></h4>
+        </div>
+        <div class="goals-third-col">
+          <img src="images/blurred/calendar.png" alt="" />
+          <small>Калории за деня</small>
+          <h4 class="food-day-calories">0</h4>
+        </div>
+      </div>
+      <div class="food-graph-sec">
+        <div class="food-first-chart">
+          <div class="header-charts">
+            <div class="label-food-month-chart">
+              <h2>Калории за седмица</h2>
+              <i class="fa-regular fa-circle-question food-week-info"></i>
+              <div class="week-more-info">
+                <h3>
+                  За да се добавят калории, първо трябва да се добави храна от
+                  долното меню
+                </h3>
+              </div>
+            </div>
+            <div class="food-chart-arrows">
+              <i class="fa-solid fa-angle-left"></i>
+              <i class="fa-solid fa-angle-right"></i>
+            </div>
+          </div>
+          <canvas id="foodChartWeek"></canvas>
+        </div>
+        <div class="food-first-chart">
+          <div class="header-charts">
+            <div class="label-food-month-chart">
+              <h2>Калории за месец:</h2>
+              <h2 class="food-chart-month">Януари</h2>
+            </div>
+            <div class="food-chart-arrows">
+              <i class="fa-solid fa-angle-left"></i>
+              <i class="fa-solid fa-angle-right"></i>
+            </div>
+          </div>
+
+          <canvas id="foodChartMonth"></canvas>
+        </div>
+      </div>
+      <div class="food-add-sec">
+        <div class="food-add-header">
+          <h2>Добави храна</h2>
+          <hr class="food-hr" />
+        </div>
+        <div class="food-add-input-div">
+          <form class="choose-food" action="/food" method="POST">
+            <div class="food-type-div">
+              <label for="food-type">Тип храна</label>
+              <select class="food-pork-type food-type-choose input">
+                <option value="food-none">Избери</option>
+                <option value="food-pork">🐂 Телешко / Говеждо</option>
+                <option value="food-sheep">🐏 Агнешко / Овче</option>
+                <option value="food-goat">🐐 Козе</option>
+                <option value="food-pig">🐖 Свинско</option>
+                <option value="food-chicken">🐔 Пилешко</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-none">
+              <label for="food-pork-type">Храна</label>
+              <select class="food-pork-type food-selection input">
+                <option value="0">Избери</option>
+                <option value="0">Моля изберете тип на храната!</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-pork hidden">
+              <label for="food-pork-type">Храна</label>
+              <select
+                name="foodPork"
+                class="food-pork-type food-selection input"
+              >
+                <option value="0">Избери</option>
+                <option value="Печено кюфте">🧆 Печено кюфте</option>
+                <option value="Пържено кюфте">🧆 Пържено кюфте</option>
+                <option value="0">ТЕЛЕШКО / ГОВЕЖДО</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-sheep hidden">
+              <label for="food-pork-type">Храна</label>
+              <select
+                name="foodSheep"
+                class="food-pork-type food-selection input"
+              >
+                <option value="0">Избери</option>
+                <option value="0">АГНЕШКО / ОВЧЕ</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-goat hidden">
+              <label for="food-pork-type">Храна</label>
+              <select
+                name="foodGoat"
+                class="food-pork-type food-selection input"
+              >
+                <option value="0">Избери</option>
+                <option value="0">КОЗЕ</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-pig hidden">
+              <label for="food-pork-type">Храна</label>
+              <select
+                name="foodPig"
+                class="food-pork-type food-selection input"
+              >
+                <option value="0">Избери</option>
+                <option value="Свински ребра">🥩 Свински ребра</option>
+                <option value="Свински език">🥩 Свински език</option>
+                <option value="Свински крака">🥩 Свински крака</option>
+                <option value="Свински джолан">🥩 Свински джолан</option>
+                <option value="Свински врат">🥩 Свински врат</option>
+                <option value="Свински бъбреци">🥩 Свински бъбреци</option>
+                <option value="Свински бут">🥩 Свински бут</option>
+                <option value="Свинска шия">🥩 Свинска шия</option>
+                <option value="Свинска пържола">🥩 Свинска пържола</option>
+                <option value="Свинско шкембе">🍵 Свинско шкембе</option>
+              </select>
+            </div>
+
+            <div class="food-second-type-div food-chicken hidden">
+              <label for="food-pork-type">Храна</label>
+              <select
+                name="foodChicken"
+                class="food-pork-type food-selection input"
+              >
+                <option value="0">Избери</option>
+                <option value="0">ПИЛЕШКО</option>
+              </select>
+            </div>
+            <div class="food-date-div">
+              <label for="food-date">Дата</label>
+              <input
+                type="date"
+                name="foodDate"
+                class="food-date-input input"
+                value="<%= new Date().toISOString().split('T')[0] %>"
+                disabled
+              />
+            </div>
+            <div class="food-quantity-div">
+              <label for="food-quantity">Количество в грамове</label>
+              <input
+                type="number"
+                name="foodQuantity"
+                class="food-quantity-input input"
+              />
+            </div>
+            <div class="food-add-button">
+              <button class="button-blue">Добави</button>
+            </div>
+          </form>
+
+          <!-- prettier-ignore -->
+          <% if (userTodayMeals) { %>
+          <div class="food-info-div">
+            <div class="food-info-left">
+              <h3 class="food-name">
+                <%= userTodayMeals[userTodayMeals.length - 1].food %>
+              </h3>
+              <div class="food-contents">
+                <div class="food-contents-calories">
+                  <h4 class="food-calories">214 kcal</h4>
+                  <small>Енергия</small>
+                </div>
+                <div class="food-contents-carbohydrates">
+                  <h4 class="food-carbohydrates">25 g</h4>
+                  <small>Въглехидрати</small>
+                </div>
+                <div class="food-contents-proteins">
+                  <h4 class="food-proteins">15 g</h4>
+                  <small>Протеини</small>
+                </div>
+                <div class="food-contents-fats">
+                  <h4 class="food-fats">17 g</h4>
+                  <small>Мазнини</small>
+                </div>
+                <input
+                  class="food-hidden-qty"
+                  type="hidden"
+                  value="<%= userTodayMeals[userTodayMeals.length - 1].qty %>"
+                />
+              </div>
+              <div class="food-contects-premium">
+                <div class="premium-carbohydrates">
+                  <h5>Въглехидрати</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="premium-proteins">
+                  <h5>Протеини</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="premium-fats">
+                  <h5>Мазнини</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <img class="food-info-right food-img" src="" alt="" />
+          </div>
+          <% } else { %>
+          <div class="food-no-contents-div">
+            <h2 class="add-first-food">Няма добавена храна</h2>
+          </div>
+          <% } %>
+        </div>
+      </div>
+      <div class="food-history-and-recomendations">
+        <div class="history-sec">
+          <h2>История</h2>
+          <hr class="food-hr" />
+        </div>
+        <div class="food-search-sec">
+          <h2>Търсене на храни</h2>
+          <hr class="food-hr" />
+        </div>
+        <% if (userTodayMeals) { %>
+        <div class="food-history-col">
+          <div class="food-table-header">
+            <small>Дата</small>
+            <small>Храна</small>
+            <small>Количество</small>
+            <small>Повече</small>
+          </div>
+          <div class="food-item">
+            <% userTodayMeals.slice().reverse().forEach(userTodayMeal => { %>
+            <div class="food-item-row">
+              <div class="food-row-one">
+                <div class="food-date-col">
+                  <h6>
+                    <%= new Date().toISOString().split('T')[0].replace(/-/g,
+                    '/') %>
+                  </h6>
+                </div>
+                <div class="food-food-col">
+                  <h6 class="food-history-name"><%= userTodayMeal.food %></h6>
+                </div>
+                <div class="food-quantity-col">
+                  <h6 class="food-quantity-all"><%= userTodayMeal.qty %> g</h6>
+                </div>
+                <div class="food-history-dropdown">
+                  <i
+                    class="uil uil-arrow-down food-history-dropdown-button"
+                    data-open="true"
+                  ></i>
+                </div>
+              </div>
+              <div class="food-row-dropdown-wrapper hidden">
+                <div class="food-row-dropdown">
+                  <div class="food-row-standart">
+                    <input type="hidden" name="fake-name" class="food-name" />
+                    <div class="food-row-calories">
+                      <h4 class="food-calories">214 kcal</h4>
+                      <small>Енергия</small>
+                    </div>
+                    <div class="food-row-carbonhydrates">
+                      <h4 class="food-carbohydrates">25 g</h4>
+                      <small>Въглехидрати</small>
+                    </div>
+                    <div class="food-row-proteins">
+                      <h4 class="food-proteins">15 g</h4>
+                      <small>Протеини</small>
+                    </div>
+                    <div class="food-row-fat">
+                      <h4 class="food-fats">17 g</h4>
+                      <small>Мазнини</small>
+                    </div>
+                  </div>
+                  <div class="food-dropdown-premium-sec">
+                    <div class="food-row-premium-carbonhydrates">
+                      <h5>Въглехидрати</h5>
+                      <ul>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="food-row-premium-proteins">
+                      <h5>Протеини</h5>
+                      <ul>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="food-row-premium-fat">
+                      <h5>Мазнини</h5>
+                      <ul>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                        <li>
+                          <i class="uil uil-info-circle"></i
+                          ><i class="uil uil-lock"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        <% } %>
+
+        <div class="food-search-col">
+          <div class="search-bar-div">
+            <div class="search-input-div">
+              <i class="uil uil-search food-search"></i>
+              <input
+                class="search-bar input"
+                type="text"
+                placeholder="Търси..."
+              />
+            </div>
+          </div>
+
+          <div class="spinner hidden">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
+
+          <h3 class="no-results hidden">Няма резултати</h3>
+          <div class="food-info-div search-info-div hidden">
+            <div class="food-info-left food-left-search">
+              <h3 class="food-name">Свински уши</h3>
+              <div class="food-contents">
+                <div class="food-contents-calories">
+                  <h4 class="food-calories">214 kcal</h4>
+                  <small>Енергия</small>
+                </div>
+                <div class="food-contents-carbohydrates">
+                  <h4 class="food-carbohydrates">25 g</h4>
+                  <small>Въглехидрати</small>
+                </div>
+                <div class="food-contents-proteins">
+                  <h4 class="food-proteins">15 g</h4>
+                  <small>Протеини</small>
+                </div>
+                <div class="food-contents-fats">
+                  <h4 class="food-fats">17 g</h4>
+                  <small>Мазнини</small>
+                </div>
+              </div>
+              <div class="food-contects-premium">
+                <div class="premium-carbohydrates">
+                  <h5>Въглехидрати</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="premium-proteins">
+                  <h5>Протеини</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+                <div class="premium-fats">
+                  <h5>Мазнини</h5>
+                  <ul>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                    <li>
+                      <i class="uil uil-info-circle"></i
+                      ><i class="uil uil-lock"></i>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <img
+              class="food-info-right food-search-img food-img"
+              src=""
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,86 @@
+<div class="dashboard-left">
+  <div class="profile-row">
+    <img class="dashboard-acc-img" src="images/blurred/accIMG.jpg" alt="" />
+    <small class="dashboard-profile-name"><%= user.name %></small>
+    <span>
+      <% if (user.paidLevel === 1) { %> Безплатен план <% } %> <% if
+      (user.paidLevel === 2) { %> Базов план <% } %> <% if (user.paidLevel ===
+      3) { %> Премиум план <% } %>
+    </span>
+  </div>
+  <% if (user.paidLevel === 1 || user.paidLevel === 2) { %>
+  <a href="/#section-3" class="dashboard-upgrade-row">
+    <i class="fa-regular fa-star"></i>
+    <small class="dashboard-upgrade-small">Подобри</small>
+  </a>
+  <% } %>
+  <div class="buttons-row">
+    <!-- 
+    <a href="/dashboard">
+      <div class="dashboard-home">
+        <i class="fa-solid fa-house-chimney"></i>
+        <small class="dashboard-side-button">Начало</small>
+      </div>
+    </a>
+    <a href="/workout">
+      <div class="dashboard-training">
+        <i class="fa-solid fa-dumbbell"></i>
+        <small class="dashboard-side-button">Тренировки</small>
+      </div>
+    </a>
+    -->
+    <a href="/food">
+      <div class="dashboard-food">
+        <i class="fa-solid fa-utensils"></i>
+        <small class="dashboard-side-button">Хранене</small>
+        <i class="fa-solid fa-angles-right more-arrow"></i>
+      </div>
+    </a>
+    <div class="food-extend">
+      <a href="/food-summary">Общи</a>
+      <a href="/food-personal">Персонално хранене</a>
+    </div>
+    <a href="/calculator">
+      <div class="dashboard-calculators">
+        <i class="fa-solid fa-calculator"></i>
+        <small class="dashboard-side-button">Калкулатори</small>
+      </div>
+    </a>
+    <hr class="dashboard-panel-hr" />
+    <a href="/account">
+      <div class="dashboard-profile-button">
+        <i class="fa-solid fa-user"></i>
+        <small class="dashboard-side-button">Профил</small>
+      </div>
+    </a>
+    <a>
+      <div class="dashboard-profile-button">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <form action="/logout" method="POST">
+          <button class="profile-logout-button">
+            <small class="dashboard-side-button">Изход</small>
+          </button>
+        </form>
+      </div>
+    </a>
+  </div>
+</div>
+<div class="dashboard-bottom">
+  <!--
+  <a href="/dashboard" class="mobile-dashboard-but">
+    <i class="fa-solid fa-house-chimney"></i>
+  </a>
+  <a href="/workout" class="mobile-training-but">
+    <i class="fa-solid fa-dumbbell"></i>
+  </a>
+  -->
+  <a href="/food" class="mobile-food-but">
+    <i class="fa-solid fa-utensils"></i>
+  </a>
+  <a href="/calculator" class="mobile-calculator-but">
+    <i class="fa-solid fa-calculator"></i>
+  </a>
+  <a href="/account" class="mobile-account-but">
+    <i class="fa-solid fa-user"></i>
+  </a>
+</div>

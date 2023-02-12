@@ -1,0 +1,428 @@
+<%- include('../includes/head') -%>
+<body class="normal-body">
+  <header class="index-header">
+    <nav class="nav">
+      <a class="logo-a" href="/">
+        <img src="images/logo.png" alt="FTHub logo" />
+      </a>
+
+      <div class="nav-buttons">
+        <a class="nav__link" href="#section-1">Начало</a>
+        <a class="nav__link" href="#section-2">Функции</a>
+        <a class="nav__link" href="#section-3">Планове</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="section-1">
+      <div class="index-first-row">
+        <span>Направи тренировката си по-ефективна</span>
+        <div class="first-main">
+          <h1 class="first-header">FTHub</h1>
+          <h2>
+            Най-добрият помощник на&nbsp;<span class="type-animation"></span>
+          </h2>
+          <h3>
+            Следи тренировките си ежедневно, управлявай хранителния си режим,
+            следи теглото си, грижи се за тялото си
+          </h3>
+        </div>
+        <!-- prettier-ignore -->
+        <a <% if (user) { %>
+          href="/food" class="login-button"
+        <% } else { %>
+          href="#section-3" class="login-button nav__link"
+        <% } %>
+        >Към приложението</a>
+      </div>
+      <div class="dashboard-div">
+        <div class="dashboard-img">
+          <img
+            src="images/blurred/first-img.jpg"
+            data-src="images/blurred/indexIMG1.png"
+            alt=""
+            class="startScroll"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section-2">
+      <div class="index-features">
+        <div class="features-row1">
+          <div class="features-row1-left">
+            <div class="features-header">
+              <div class="dif-col-small">
+                <small>Твоят фитнес експерт</small>
+              </div>
+              <h2>
+                Отключи пълния си потенциал.
+                <span>Улесни твоето фитнес приключение</span>
+              </h2>
+            </div>
+            <small
+              >FTHub е създаден да ти помага в достигането на твоите фитнес цели
+              чрез комбинация от детайлно следене на прогреса, персонализирани
+              хранителни планове и най-различни калкулатори свързани с храненето
+              и човешкия организъм!</small
+            >
+            <a <% if (user) { %>
+              href="/food" class="features-button button-blue" <% } else { %>
+              href="#section-3" class="features-button button-blue nav__link" <%
+              } %> >Започни</a
+            >
+          </div>
+          <div class="features-row1-right">
+            <img src="/images/blurred/index_trainings blurred.png" alt="" />
+          </div>
+        </div>
+
+        <div class="features-mobile-select">
+          <button class="feature1 mobile-feature selected">Тренировки</button>
+          <button class="feature2 mobile-feature">Хранене</button>
+          <button class="feature3 mobile-feature">Калкулатори</button>
+        </div>
+        <div class="features-row2">
+          <div class="training-info food-parent">
+            <div class="info-header">
+              <div class="features-loading-line">
+                <div class="load-line"></div>
+              </div>
+              <span>01.</span>
+              <h3 class="active-header info-title">Тренировки</h3>
+            </div>
+            <small class="info-text"
+              >Разгърнете потенциала си за фитнес с най-добрия спътник за
+              тренировки! Нашето фитнес приложение е създадено, за да ви помогне
+              да постигнете фитнес целите си и да преобразите тялото си. С
+              персонализираните тренировки и плановете за хранене ще можете да
+              проследявате напредъка си и да виждате реални резултати.</small
+            >
+          </div>
+          <div class="food-info food-parent">
+            <div class="info-header">
+              <div class="features-loading-line">
+                <div class="load-line"></div>
+              </div>
+              <span>02.</span>
+              <h3 class="info-title">Хранене</h3>
+            </div>
+            <small class="info-text hidden"
+              >Опитайте вкуса на здравословното хранене с нашето приложение за
+              храни! Здравословното хранене никога не е било по-лесно и
+              по-вкусно. С нашето приложение за храна ще получите достъп до свят
+              от здравословни и вкусни ястия, съобразени с вашите вкусове и
+              хранителни нужди.</small
+            >
+          </div>
+          <div class="calculator-info food-parent">
+            <div class="info-header">
+              <div class="features-loading-line">
+                <div class="load-line"></div>
+              </div>
+              <span>03.</span>
+              <h3 class="info-title">Калкулатори</h3>
+            </div>
+            <small class="info-text hidden"
+              >Дайте възможност на фитнес пътуването си с нашето приложение за
+              калкулатор! Нашето приложение за калкулатор е най-добрият
+              инструмент за постигане на фитнес целите ви. С помощта на различни
+              калкулатори ще разполагате с цялата необходима информация, за да
+              проследявате напредъка си и да вземате информирани решения за
+              здравето си.</small
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section pricing-section" id="section-3">
+      <div class="pricing-row-all">
+        <form class="pricing-item">
+          <div class="pricing-row1">
+            <h4>Безплатно</h4>
+            <h2>0<span>лв.</span></h2>
+            <small>/месец</small>
+          </div>
+          <div class="pricing-row2">
+            <div class="pricing-benefit-row">
+              <h3>Базови тренировки</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Следене на калории</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Калкулатори</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Подробни тренировки</h3>
+              <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Фитнес план</h3>
+              <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Персонално хранене</h3>
+              <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+          </div>
+          <% if (user) { %>
+          <button type="button" class="price-choose price-free">Избери</button>
+          <% } else { %>
+          <a href="/account" class="price-choose">Влез в профил</a>
+          <% } %>
+        </form>
+        <form
+          class="pricing-item"
+          action="/create-checkout-session"
+          method="POST"
+        >
+          <div class="pricing-row1">
+            <h4>Стандарт</h4>
+            <h2>4,99<span>лв.</span></h2>
+            <small>/месец</small>
+          </div>
+          <div class="pricing-row2">
+            <div class="pricing-benefit-row">
+              <h3>Базови тренировки</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Следене на калории</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Калкулатори</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Подробни тренировки</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Фитнес план</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Персонално хранене</h3>
+              <i class="fa-regular fa-circle-xmark"></i>
+            </div>
+          </div>
+          <% if (user) { %>
+          <input
+            type="hidden"
+            name="priceId"
+            value="price_1MVeUfIzrENprrKEnWUL63i4"
+          />
+          <input type="hidden" name="userId" value="<%= user.id %>" />
+          <button class="price-choose price-medium">Избери</button>
+          <% } else { %>
+          <a href="/account" class="price-choose">Влез в профил</a>
+          <% } %>
+        </form>
+        <form
+          class="pricing-item"
+          action="/create-checkout-session"
+          method="POST"
+        >
+          <div class="pricing-row1">
+            <h4>Премиум</h4>
+            <h2>6,99<span>лв.</span></h2>
+            <small>/месец</small>
+          </div>
+          <div class="pricing-row2">
+            <div class="pricing-benefit-row">
+              <h3>Базови тренировки</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Следене на калории</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Калкулатори</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Подробни тренировки</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Фитнес план</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+            <div class="pricing-benefit-row">
+              <h3>Персонално хранене</h3>
+              <i class="fa-regular fa-circle-check"></i>
+            </div>
+          </div>
+          <% if (user) { %>
+          <input
+            type="hidden"
+            name="priceId"
+            value="price_1MVeWDIzrENprrKEX5GWXcKO"
+          />
+          <input type="hidden" name="userId" value="<%= user.id %>" />
+          <button class="price-choose price-high">Избери</button>
+          <% } else { %>
+          <a href="/account" class="price-choose">Влез в профил</a>
+          <% } %>
+        </form>
+      </div>
+
+      <div class="mobile-pricing">
+        <div class="plan-select">
+          <button class="plan-selector selector1">Безплатен</button>
+          <button class="plan-selector selector2">Стандарт</button>
+          <button class="plan-selector selector3">Премиум</button>
+        </div>
+        <div class="plan-swiper">
+          <div class="selected-plan">
+            <form class="pricing-item">
+              <div class="pricing-row1">
+                <h4>Безплатно</h4>
+                <h2>0<span>лв.</span></h2>
+                <small>/месец</small>
+              </div>
+              <div class="pricing-row2">
+                <div class="pricing-benefit-row">
+                  <h3>Базови тренировки</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Следене на калории</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Калкулатори</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Подробни тренировки</h3>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Фитнес план</h3>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Персонално хранене</h3>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+              </div>
+              <% if (user) { %>
+              <button type="button" class="price-choose price-free">
+                Избери
+              </button>
+              <% } else { %>
+              <a href="/account" class="price-choose">Влез в профил</a>
+              <% } %>
+            </form>
+            <form
+              class="pricing-item"
+              action="/create-checkout-session"
+              method="POST"
+            >
+              <div class="pricing-row1">
+                <h4>Стандарт</h4>
+                <h2>4,99<span>лв.</span></h2>
+                <small>/месец</small>
+              </div>
+              <div class="pricing-row2">
+                <div class="pricing-benefit-row">
+                  <h3>Базови тренировки</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Следене на калории</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Калкулатори</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Подробни тренировки</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Фитнес план</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Персонално хранене</h3>
+                  <i class="fa-regular fa-circle-xmark"></i>
+                </div>
+              </div>
+              <% if (user) { %>
+              <input
+                type="hidden"
+                name="priceId"
+                value="price_1MVeUfIzrENprrKEnWUL63i4"
+              />
+              <input type="hidden" name="userId" value="<%= user.id %>" />
+              <button class="price-choose price-medium">Избери</button>
+              <% } else { %>
+              <a href="/account" class="price-choose">Влез в профил</a>
+              <% } %>
+            </form>
+            <form
+              class="pricing-item"
+              action="/create-checkout-session"
+              method="POST"
+            >
+              <div class="pricing-row1">
+                <h4>Премиум</h4>
+                <h2>6,99<span>лв.</span></h2>
+                <small>/месец</small>
+              </div>
+              <div class="pricing-row2">
+                <div class="pricing-benefit-row">
+                  <h3>Базови тренировки</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Следене на калории</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Калкулатори</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Подробни тренировки</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Фитнес план</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+                <div class="pricing-benefit-row">
+                  <h3>Персонално хранене</h3>
+                  <i class="fa-regular fa-circle-check"></i>
+                </div>
+              </div>
+              <% if (user) { %>
+              <input
+                type="hidden"
+                name="priceId"
+                value="price_1MVeWDIzrENprrKEX5GWXcKO"
+              />
+              <input type="hidden" name="userId" value="<%= user.id %>" />
+              <button class="price-choose price-high">Избери</button>
+              <% } else { %>
+              <a href="/account" class="price-choose">Влез в профил</a>
+              <% } %>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <%- include('../includes/footer') -%>
+</body>

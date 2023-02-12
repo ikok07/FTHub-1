@@ -1,0 +1,338 @@
+<%- include('../includes/head') %>
+<body class="dashboard-body">
+  <%- include('../includes/dashboard-nav') %>
+  <div class="calculator-container">
+    <div class="calculator-header">
+      <h1>Калкулатори</h1>
+      <div class="calculator-choose-div">
+        <button class="calculator-choose-button button-blue">Избери</button>
+        <div class="calculator-dropdown">
+          <div>
+            <a href="#" class="bmi-select">ИТМ</a>
+          </div>
+          <div>
+            <a href="#" class="calories-select">Калории</a>
+          </div>
+          <div>
+            <a href="#" class="fat-select">Мазнини</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="calculator-main">
+      <div class="calculator-swiper">
+        <div class="bmi-calculator">
+          <h2 class="bmi-header">Индекс на телесна маса</h2>
+          <div class="calculator-inputs">
+            <div class="calculator-height">
+              <label for="height">Ръст в сантиметри</label>
+              <input
+                type="number"
+                class="input input-type bmi-height"
+                name="height"
+                value="<%= userDetails.height %>"
+              />
+            </div>
+            <div class="calculator-weight">
+              <label for="weight">Тегло в килограми</label>
+              <input
+                type="number"
+                name="weight"
+                class="input input-type bmi-weight"
+                value="<%= userDetails.kg %>"
+              />
+            </div>
+          </div>
+
+          <button class="calculator-confirm button-blue bmi-button">
+            Изчисли
+          </button>
+          <div class="calculator-info-one">
+            <small
+              ><h6>Нормално тегло</h6>
+              - ИТМ между 18.5 и 25.</small
+            >
+            <small
+              ><h6>Наднормено тегло</h6>
+              - ИТМ над 25.</small
+            >
+            <small
+              ><h6>Затлъстяване в различните си степени</h6>
+              - ИТМ над 30.</small
+            >
+            <small
+              ><h6>Поднормено тегло</h6>
+              – ИТМ под 18.5.</small
+            >
+          </div>
+          <div class="calculator-results">
+            <img
+              class="manImg"
+              src="images/blurred/greenMan.png"
+              data-src="images/greenMan.png"
+              alt=""
+            />
+            <div class="calculator-results-message">
+              <h3 class="calculator-bmi-result">18.9</h3>
+              <h4 class="calculator-weight-type"></h4>
+              <div class="calculator-final-message">
+                <h6 class="calculator-final-message-h6"></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="calories-calculator">
+          <h2>Калкулатор на калории</h2>
+          <div class="calories-data-input">
+            <div class="calculator-sex-input">
+              <label for="sex">Пол</label>
+              <select name="sex" class="sex-select input calories-sex">
+                <option value="<%= userDetails.sex === 'Мъж' ? 1 : 2 %>">
+                  <%= userDetails.sex %>
+                </option>
+              </select>
+            </div>
+            <div class="calculator-age-input">
+              <label for="age">Възраст</label>
+              <input
+                type="number"
+                class="input input-type calories-age"
+                value="<%= (new Date).getFullYear() - userDetails.born %>"
+              />
+            </div>
+            <div class="calculator-height">
+              <label for="height">Ръст в сантиметри</label>
+              <input
+                type="number"
+                class="input input-type calories-height"
+                name="height"
+                value="<%= userDetails.height %>"
+              />
+            </div>
+            <div class="calculator-weight">
+              <label for="weight">Тегло в килограми</label>
+              <input
+                type="number"
+                name="weight"
+                class="input input-type calories-weight"
+                value="<%= userDetails.kg %>"
+              />
+            </div>
+            <div class="calculator-activity-level">
+              <label for="activity">Активност</label>
+              <select name="activity" class="input calories-activity">
+                <option value="-1">Избери</option>
+                <option value="0">
+                  Само изчисляване на базална скорост на метаболизма
+                </option>
+                <option value="1">
+                  Застояване: Малко или почти никаква физическа активност
+                </option>
+                <option value="2">Лека активност: 1-3 пъти на седмица</option>
+                <option value="3">
+                  Умерена: Активност 4-5 пъти на седмица
+                </option>
+                <option value="4">
+                  Активна: Ежедневни тренировки или 3-4 интензивни тренировки на
+                  седмица
+                </option>
+                <option value="5">
+                  Много активна: Интензивни тренировки 6-7 пъти на седмица
+                </option>
+              </select>
+            </div>
+            <button class="button-blue calories-button">Изчисли</button>
+          </div>
+          <div class="calories-results">
+            <table class="calories-results-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <h6>Поддържане на тегло</h6>
+                  </td>
+                  <td>
+                    <div class="calories-results-column">
+                      <h5 class="calories-final"></h5>
+                      <small>Калории/ден</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h6>Леко отслабване</h6>
+                    <small>0.25 кг/седмица</small>
+                  </td>
+                  <td>
+                    <div class="calories-results-column">
+                      <h5 class="calories-second">2,111</h5>
+                      <small>Калории/ден</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h6>Отслабване</h6>
+                    <small>0.5 кг/седмица</small>
+                  </td>
+                  <td>
+                    <div class="calories-results-column">
+                      <h5 class="calories-third">1,952</h5>
+                      <small>Калории/ден</small>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <h6>Експресно отслабване</h6>
+                    <small>1 кг/седмица</small>
+                  </td>
+                  <td>
+                    <div class="calories-results-column">
+                      <h5 class="calories-fourth">1,425</h5>
+                      <small>Калории/ден</small>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="bmr-table">
+              <tbody>
+                <tr>
+                  <td class="bmr-info">
+                    <h6>Поддържане на тегло</h6>
+                  </td>
+                  <td>
+                    <div class="bmr-results-column">
+                      <h5 class="final-bmr"></h5>
+                      <small>Калории/ден</small>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="body-fat-calculator">
+          <h2>Калкулатор на мазнини</h2>
+          <div class="fat-input-data">
+            <div class="calculator-sex-input">
+              <label for="sex">Пол</label>
+              <select name="sex" class="sex-select input fat-sex">
+                <option value="<%= userDetails.sex === 'Мъж' ? 1 : 2 %>">
+                  <%= userDetails.sex %>
+                </option>
+              </select>
+            </div>
+            <div class="calculator-age-input">
+              <label for="age">Възраст</label>
+              <input
+                type="number"
+                class="input input-type fat-age"
+                value="<%= (new Date).getFullYear() - userDetails.born %>"
+              />
+            </div>
+            <div class="calculator-height">
+              <label for="height">Ръст в сантиметри</label>
+              <input
+                type="number"
+                class="input input-type fat-height"
+                name="height"
+                value="<%= userDetails.height %>"
+              />
+            </div>
+            <div class="calculator-weight">
+              <label for="weight">Тегло в килограми</label>
+              <input
+                type="number"
+                name="weight"
+                class="input input-type fat-weight"
+                value="<%= userDetails.kg %>"
+              />
+            </div>
+            <div class="calculator-waist">
+              <label for="waist">Талия в сантиметри</label>
+              <input
+                type="number"
+                name="waist"
+                class="input input-type fat-waist"
+              />
+            </div>
+            <div class="calculator-neck">
+              <label for="neck">Шия в сантиметри</label>
+              <input
+                type="number"
+                name="waist"
+                class="input input-type fat-neck"
+              />
+            </div>
+            <div class="calculator-hip">
+              <label for="hip">Ханш в сантиметри</label>
+              <input
+                type="number"
+                name="hip"
+                class="input input-type fat-hip"
+              />
+            </div>
+            <button class="button-blue fat-button">Изчисли</button>
+          </div>
+          <div class="fat-results-div">
+            <div class="fat-final">
+              <h2>Мазнини:</h2>
+              <h2 class="fat-final-number"></h2>
+            </div>
+            <div class="fat-graphic">
+              <div class="fat-arrow">
+                <img src="images/blurred/fat-arrow.png" alt="" />
+              </div>
+              <div class="red"></div>
+              <div class="yellow"></div>
+              <div class="light-green"></div>
+              <div class="dark-green"></div>
+              <div class="yellow-2"></div>
+              <div class="red-2"></div>
+
+              <small class="fat-essential">Слаб</small>
+              <small class="fat-athletic">Атлет</small>
+              <small class="fat-fitness">Фитнес</small>
+              <small class="fat-average">Средна</small>
+              <small class="fat-obese">Затлъстяване</small>
+            </div>
+            <div class="fat-result-table">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>Категория</td>
+                    <td class="fatType"></td>
+                  </tr>
+                  <tr>
+                    <td>Маса на мазнини</td>
+                    <td class="fatKg"></td>
+                  </tr>
+                  <tr>
+                    <td>Маса без мазнини</td>
+                    <td class="withoutFat"></td>
+                  </tr>
+                  <tr class="idealFatRow">
+                    <td>Идеални мазнини за възрастта</td>
+                    <td class="idealFat">10.5%</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Мазнини за изгаряне / набавяне, за да се достигне идеално
+                      тегло
+                    </td>
+                    <td class="fatToLose"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="fat-error-div">
+            <h1>Моля въведете валидни данни!</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

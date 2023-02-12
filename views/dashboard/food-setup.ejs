@@ -1,0 +1,209 @@
+<%- include('../includes/head') %>
+<body class="dashboard-body">
+  <%- include('../includes/dashboard-nav') %>
+  <form action="/save-diet" method="POST">
+    <div class="setup-div">
+      <div class="setup-phase">
+        <div class="phase-option">
+          <span class="step-show-label phase-active-span">Стъпка 1</span>
+          <div class="step-show">Избор на храни</div>
+        </div>
+        <div class="phase-option">
+          <span class="step-show-label">Стъпка 2</span>
+          <div class="step-show step-hide">Статистика</div>
+        </div>
+      </div>
+      <div class="setup-header">
+        <h1>Каква храна обичаш?</h1>
+        <h3>
+          Избери диети, премахни храни, към които си алергичен или просто не
+          харесваш. По-късно можеш да промениш тези настройки
+        </h3>
+      </div>
+      <div class="diet-type">
+        <h2>Каква диета предпочиташ?</h2>
+        <div class="diet-choose">
+          <div class="diet-item diet-selected" data-select="1">
+            <img src="images/sandwich.svg" alt="" />
+            <small class="diet-name">Всичко</small>
+          </div>
+          <div class="diet-item" data-select="0">
+            <img src="images/meat.svg" alt="" />
+            <small class="diet-name">Палео</small>
+          </div>
+          <div class="diet-item" data-select="0">
+            <img src="images/broccoli.svg" alt="" />
+            <small class="diet-name">Безмесна</small>
+          </div>
+          <div class="diet-item" data-select="0">
+            <img src="images/vegan.svg" alt="" />
+            <small class="diet-name">Веган</small>
+          </div>
+          <div class="diet-item" data-select="0">
+            <img src="images/wheat.svg" alt="" />
+            <small class="diet-name">Кетогенна</small>
+          </div>
+          <div class="diet-item" data-select="0">
+            <img src="images/olive.svg" alt="" />
+            <small class="diet-name">Средиземна</small>
+          </div>
+        </div>
+      </div>
+      <div class="allergy-div">
+        <h2>Имаш ли алергии?</h2>
+        <div class="allergy-type-wrapper">
+          <!-- prettier-ignore -->
+          <small
+            >Палео изключва:
+            <h4>
+              Зърнени храни, бобови растения, нишестени зеленчуци, соя, млечни
+              продукти
+            </h4>
+          </small>
+          <div class="allergy-type">
+            <div class="allergy-item" data-select="0">Глутен</div>
+            <div class="allergy-item" data-select="0">Фъстъци</div>
+            <div class="allergy-item" data-select="0">Яйца</div>
+            <div class="allergy-item" data-select="0">Риба</div>
+            <div class="allergy-item" data-select="0">Ядки</div>
+            <div class="allergy-item" data-select="0">Млечни продукти</div>
+            <div class="allergy-item" data-select="0">Соя</div>
+            <div class="allergy-item" data-select="0">Миди</div>
+          </div>
+          <div class="allergy-all-wrapper">
+            <div class="allergy-all">
+              <div class="allergy-col1">
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Месо</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Говеждо</div>
+                  <div class="allergy-more-item" data-select="0">Свинско</div>
+                  <div class="allergy-more-item" data-select="0">Агнешко</div>
+                  <div class="allergy-more-item" data-select="0">Телешко</div>
+                </div>
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Зеленчуци</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Артишок</div>
+                  <div class="allergy-more-item" data-select="0">Цвекло</div>
+                  <div class="allergy-more-item" data-select="0">Броколи</div>
+                  <div class="allergy-more-item" data-select="0">Моркови</div>
+                  <div class="allergy-more-item" data-select="0">Чушки</div>
+                  <div class="allergy-more-item" data-select="0">Домати</div>
+                  <div class="allergy-more-item" data-select="0">Патладжан</div>
+                </div>
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Млечни продукти</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Мляко</div>
+                  <div class="allergy-more-item" data-select="0">Сирене</div>
+                  <div class="allergy-more-item" data-select="0">Яйца</div>
+                  <div class="allergy-more-item" data-select="0">Масло</div>
+                </div>
+              </div>
+              <div class="allergy-col2">
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Зърнени изделия</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">
+                    Овесени ядки
+                  </div>
+                  <div class="allergy-more-item" data-select="0">
+                    Макаронени изделия
+                  </div>
+                  <div class="allergy-more-item" data-select="0">
+                    Хлебни изделия
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Ориз</div>
+                  <div class="allergy-more-item" data-select="0">Захар</div>
+                </div>
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Плодове</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Ябълки</div>
+                  <div class="allergy-more-item" data-select="0">Банани</div>
+                  <div class="allergy-more-item" data-select="0">Грозде</div>
+                  <div class="allergy-more-item" data-select="0">Портокали</div>
+                  <div class="allergy-more-item" data-select="0">Боровинки</div>
+                  <div class="allergy-more-item" data-select="0">Малини</div>
+                </div>
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Бобови храни</h5>
+                  </div>
+                  <div class="allergy-more-item" data-select="0">Боб</div>
+                  <div class="allergy-more-item" data-select="0">Леща</div>
+                  <div class="allergy-more-item" data-select="0">Грах</div>
+                </div>
+              </div>
+              <div class="allergy-col3">
+                <div class="allergy-more-wrapper">
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Майонеза</h5>
+                  </div>
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Мед</h5>
+                  </div>
+                  <div class="allergy-more-item main-item" data-select="0">
+                    <h5>Ядки</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="setup-continiue button-blue">
+        Продължи
+      </button>
+      <div class="nutrition-div">
+        <div class="nutrition-header">
+          <h1>Хранителни цели</h1>
+          <h3>
+            Можеш да видиш какви хранителни цели ти предлагаме. Ако не те
+            удовлетворяват, можеш по-късно да ги промениш в настройките.
+          </h3>
+        </div>
+        <div class="nutrition-main">
+          <div class="nutrition-item">
+            <h2>Калории</h2>
+            <h2><%= caloriesWanted %>kcal</h2>
+          </div>
+          <div class="nutrition-item">
+            <h2>Въглехидрати</h2>
+            <h2>Поне <%= carbohydratesWanted %>g</h2>
+          </div>
+          <div class="nutrition-item">
+            <h2>Мазнини</h2>
+            <h2>Поне <%= fatWanted %>g</h2>
+          </div>
+          <div class="nutrition-item">
+            <h2>Протеини</h2>
+            <h2>Поне <%= proteinWanted %>g</h2>
+          </div>
+        </div>
+        <button type="submit" class="setup-finish button-blue">Продължи</button>
+      </div>
+    </div>
+    <input class="diet-name-hidden" type="hidden" name="dietName" value />
+    <input
+      class="selected-allergies-hidden"
+      type="hidden"
+      name="allergiesSelected"
+      value
+    />
+    <input type="hidden" name="caloriesWanted" value="<%= caloriesWanted %>" />
+    <input
+      type="hidden"
+      name="carbohydratesWanted"
+      value="<%= carbohydratesWanted %>"
+    />
+    <input type="hidden" name="fatWanted" value="<%= fatWanted %>" />
+    <input type="hidden" name="proteinWanted" value="<%= proteinWanted %>" />
+  </form>
+</body>
